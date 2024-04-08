@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import InputField from './src/components/InputField';
 import Form from './src/components/Form';
 import logo from './assets/logo-code-quest-01.png';
 
