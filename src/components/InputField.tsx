@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 
 type InputProps = {
-  onChangeText: () => {},
+  onChangeText: (text: string) => void,
   value: string,
 }
 
