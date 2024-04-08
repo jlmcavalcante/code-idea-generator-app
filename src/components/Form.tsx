@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import InputField from './InputField';
-import { View } from 'react-native';
+import { Button, View, Text } from 'react-native';
 import SelectInput from './SelectInput';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Form = () => {
+const Form = ({ navigation }) => {
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
   const [email, setEmail] = useState('');
@@ -14,14 +16,6 @@ const Form = () => {
     { label: 'Intermediário', value: 'intermediario' },
     { label: 'Avançado', value: 'avancado' },
   ];
-
-  const handleSubmit = () => {
-    // Exibir os valores armazenados nas variáveis
-    console.log(`Nome: ${nome}`);
-    console.log(`Sobrenome: ${sobrenome}`);
-    console.log(`Email: ${email}`);
-    console.log(`Nível: ${nivel}`);
-  };
 
   return (
     <form>
@@ -34,7 +28,10 @@ const Form = () => {
           selectedValue={nivel}
           options={options}
         />
-        <button type="button" onClick={handleSubmit}>Enviar</button>
+        <Button
+          title="Go to Details"
+          onPress={() => navigation.navigate('DisplayData')}
+        />
       </View>
     </form>
   );

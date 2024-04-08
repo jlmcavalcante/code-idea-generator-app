@@ -1,21 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { Image, StyleSheet, Text, View } from 'react-native';
-import Form from './src/components/Form';
-import logo from './assets/logo-code-quest-01.png';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/components/Home';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={{alignItems: 'center'}}>
-        <Text>Welcome to the</Text>
-        <Image
-          source={logo}
-          style={{width: 100, height: 100}}
-        />
-      </View>
-      <Form />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
