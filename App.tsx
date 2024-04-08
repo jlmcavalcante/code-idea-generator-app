@@ -1,11 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import InputField from './src/components/InputField';
+import Form from './src/components/Form';
+import logo from './assets/logo-code-quest-01.png';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Welcome to the Code Quest!</Text>
+      <View style={{alignItems: 'center'}}>
+        <Text>Welcome to the</Text>
+        <Image
+          source={logo}
+          style={{width: 100, height: 100}}
+        />
+      </View>
+      <Form />
       <StatusBar style="auto" />
     </View>
   );

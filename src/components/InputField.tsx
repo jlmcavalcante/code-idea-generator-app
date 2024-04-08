@@ -4,6 +4,7 @@ import { TextInput } from 'react-native';
 type InputProps = {
   onChangeText: (text: string) => void,
   value: string,
+  placeHolder: string
 }
 
 const InputField = (props: InputProps) => {
@@ -12,6 +13,7 @@ const InputField = (props: InputProps) => {
       style={{ borderWidth: 1, borderColor: '#ccc', padding: 10 }}
       onChangeText={props.onChangeText}
       value={props.value}
+      placeholder={props.placeHolder}
     />
   );
 };
