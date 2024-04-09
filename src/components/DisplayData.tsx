@@ -1,18 +1,12 @@
 import {Text} from 'react-native';
 
-type DisplayProps = {
-  userName: string,
-  email: string,
-}
-
-const DisplayData = ({ route }) => {
+export default function DisplayData ({route, navigation} : any) {
+  const {userName, userEmail} = route.params;
 
   return (
     <div>
-      <Text>{route.params.formData.name}</Text>
-      <Text>{route.params.formData.email}</Text>
+      <Text>{userName}</Text>
+      <Text>{userEmail}</Text>
     </div>
   );
 };
-
-export default DisplayData;

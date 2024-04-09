@@ -1,36 +1,43 @@
 import { Image, StyleSheet, Button, Text, View } from 'react-native';
-import logo from '../../assets/logo-code-quest-01.png';
-import Form from './Form';
+import logo from '../../assets/ideia.png';
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function Home({ navigation: { navigate } }) {
   return (
     <View style={styles.container}>
       <View style={{alignItems: 'center'}}>
-        <Text style={{fontSize: 36}}>Bem vindo ao</Text>
         <Image
           source={logo}
-          style={{width: 400, height: 400}}
+          style={{marginBottom: 24, width: 180, height: 180}}
+        />
+        <View style={{flexDirection: 'column'}}>
+          <Text style={{fontSize: 36, fontFamily: 'monospace'}}>
+            Code.Idea
+          </Text>
+          <Text style={{fontSize: 36, fontFamily: 'monospace'}}>
+            Generator
+          </Text>
+        </View>
+      </View>
+      <View style={{width: 300}}>
+        <Button
+          title="Comece Agora"
+          onPress={() =>
+            navigate('Form')
+          }
         />
       </View>
-      <Button
-        title="Comece Agora"
-        onPress={() =>
-          navigate('Form')
-        }
-      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    flex: 2/3,
+    backgroundColor: '#f1f1f1',
     alignItems: 'center',
     justifyContent: 'center',
+    gap: 36
   },
 });
 

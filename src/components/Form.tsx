@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 
-const Form = ({ navigation: { navigate } }) => {
+const Form = ({ navigation } : any) => {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
 
@@ -25,9 +25,12 @@ const Form = ({ navigation: { navigate } }) => {
       </View>
       <Button
         title="Confirmar"
-        onPress={() =>
-          navigate('DisplayData', {name: name, email: email})
-        }
+        onPress={() => {
+          navigation.navigate('DisplayData', {
+            userName: name, 
+            userEmail: email
+          });
+        }}
       />
     </View>
   );
