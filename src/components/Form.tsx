@@ -1,40 +1,52 @@
-import { useState } from 'react';
-import InputField from './InputField';
-import { Button, View, Text } from 'react-native';
-import SelectInput from './SelectInput';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
 
-const Form = ({ navigation }) => {
-  const [nome, setNome] = useState('');
-  const [sobrenome, setSobrenome] = useState('');
-  const [email, setEmail] = useState('');
-  const [nivel, setNivel] = useState('iniciante');
-
-  const options = [
-    { label: 'Iniciante', value: 'iniciante' },
-    { label: 'Intermediário', value: 'intermediario' },
-    { label: 'Avançado', value: 'avancado' },
-  ];
+const Form = ({ navigation: { navigate } }) => {
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
 
   return (
-    <form>
-      <View style={{gap: 24}}>
-        <InputField onChangeText={setNome} value={nome} placeHolder='Insira seu nome'/>
-        <InputField onChangeText={setSobrenome} value={sobrenome} placeHolder='Insira seu sobrenome' />
-        <InputField onChangeText={setEmail} value={email} placeHolder='Insira seu email'/>
-        <SelectInput
-          onValueChange={setNivel}
-          selectedValue={nivel}
-          options={options}
-        />
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('DisplayData')}
+    <View style={{margin: 32}}>
+      <View style={{marginBottom: 24}}>
+        <Text style={styles.label}>Nome</Text>
+        <TextInput
+          style={styles.input}
+          placeholder='Nome completo'
+          onChangeText={newName => setName(newName)}
         />
       </View>
-    </form>
+      <View style={{marginBottom: 24}}>
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder='exemplo@exemplo'
+          onChangeText={newEmail => setEmail(newEmail)}
+        />
+      </View>
+      <Button
+        title="Confirmar"
+        onPress={() =>
+          navigate('DisplayData', {name: name, email: email})
+        }
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  label: {
+    marginHorizontal: 12,
+    marginBottom: 8,
+    fontSize: 16
+  },
+  input: {
+    height: 40,
+    marginHorizontal: 12,
+    borderWidth: 2,
+    padding: 10,
+    borderColor: '#000',
+    borderRadius: 4
+  },
+});
 
 export default Form;
